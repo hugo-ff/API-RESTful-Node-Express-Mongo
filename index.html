@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pruebas API RESTful con formularios</title>
+</head>
+
+<body>
+    <h1>Pruebas API RESTful con formularios</h1>
+    <h2>Cargar nuevo maratón al sistema</h2>
+    <form method="POST">
+        <input type="text" name="name" placeholder="Nombre"><br>
+        <input type="text" name="country" placeholder="País"><br>
+        <input type="text" name="location" placeholder="Localización"><br>
+        <input type="submit">
+    </form><br>
+    <h2>Modificar maratón existente</h2>
+    <form method="POST">
+        <input type="text" name="name" placeholder="Nombre"><br>
+        <input type="text" name="country" placeholder="País"><br>
+        <input type="text" name="location" placeholder="Localización"><br>
+        <input type="text" name="_id" placeholder="ID del Maraton"><br>
+        <input type="text" name="race_web" placeholder="Sitio web"><br>
+        <input type="submit">
+    </form>
+    <h2>Eliminar un maratón del sistema</h2>
+    <form method="POST">
+        <input type="text" name="_id" placeholder="ID del Maraton"><br>
+        <input type="submit">
+    </form>
+    <script>
+        // fetch('http://localhost:3000/api/marathons')
+        fetch('https://maratones.herokuapp.com/api/marathons')
+            .then(res => res.json())
+            .then(res => console.log(res.data))
+
+        document.forms[0].addEventListener('submit', e => {
+            e.preventDefault()
+                // fetch(`http://localhost:3000/api/marathon/`, {
+            fetch(`https://maratones.herokuapp.com/api/marathon/`, {
+                    method: 'POST',
+                    body: new FormData(e.target)
+                })
+                .then(res => res.json())
+                .then(res => console.log(res))
+        })
+
+        document.forms[1].addEventListener('submit', e => {
+            e.preventDefault()
+            let formData = new FormData(e.target),
+                id = formData.get('_id')
+                // fetch(`http://localhost:3000/api/marathon/${id}`, {
+            fetch(`https://maratones.herokuapp.com/api/marathon/${id}`, {
+                    method: 'PUT',
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(res => console.log(res))
+        })
+
+        document.forms[2].addEventListener('submit', e => {
+            e.preventDefault()
+            let formData = new FormData(e.target),
+                id = formData.get('_id')
+                // fetch(`http://localhost:3000/api/marathon/${id}`, {
+            fetch(`https://maratones.herokuapp.com/api/marathon/${id}`, {
+                    method: 'DELETE',
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(res => console.log(res))
+        })
+    </script>
+</body>
+
+</html>
