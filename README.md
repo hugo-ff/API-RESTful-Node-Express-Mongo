@@ -130,7 +130,7 @@ _La colección de países puede verse en: https://maratones.herokuapp.com/api/co
 
 _La colección de maratones puede verse en: https://maratones.herokuapp.com/api/marathons_
 
-_Puede usarse POSTMAN o bien el formulario HTML desplegado en [URL del formulario] para insertar nuevos maratones, modificar un maratón existente, o bien eliminar uno. Nota: el campo "país" debe ser completado con el ID del país._
+_Puede usarse POSTMAN o bien el formulario HTML desplegado en https://hugo-ff.github.io/API-RESTful-Node-Express-Mongo-/ para insertar nuevos maratones, modificar un maratón existente, o bien eliminar uno. Nota: el campo "país" debe ser completado con el ID del país._
 
 ## Construido con 🛠️
 
